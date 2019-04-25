@@ -1,5 +1,3 @@
-//
-
 let ranks = {
     0: 'A',
     1: '2',
@@ -26,22 +24,14 @@ let suits = {
 
 let cards = [], deck = {}, flippedCard = {}, startedTimer = false, seconds = 0, minutes = 0, matches = 0
 
-for (let i = 0; i < 52; ++i) {
-    cards.push({rank: i%13, suit: i%4})
+startGame()
+
+function highlightCard() {
+    this.style.backgroundColor = '#D4D4D2'
 }
 
-for (let i = 0; i < 52; ++i) {
-    let rand = Math.floor(Math.random() * (52 - i))
-    deck[i] = cards[rand]
-    cards.splice(rand, 1)
-
-    let div = document.createElement('div')
-    div.setAttribute('id', i)
-    div.setAttribute('class', 'card')
-    let text = document.createTextNode('I')
-    div.appendChild(text)
-    div.addEventListener('click', flipCard)
-    document.getElementById('cards').appendChild(div)
+function unhighlightCard() {
+    this.style.backgroundColor = '#EDEDEC'
 }
 
 function flipCard() {
@@ -52,18 +42,19 @@ function flipCard() {
 
     let div = this
     let card = deck[div.id]
-    this.innerHTML = `${ranks[card.rank]} ${suits[card.suit]}`
+    this.innerHTML = `${ranks[card.rank]} <br> ${suits[card.suit]}`
     if (Object.entries(flippedCard).length) {
         if (flippedCard.rank == card.rank) {
             flippedCard = {}
             matches++
             console.log(matches)
             if (matches > 0) {
-                clearTimeout(t)                
-                document.getElementById('timer').textContent = 'You win!'
+                clearTimeout(t)
+                document.getElementById('play-again').style.display = 'block'
+                document.getElementById('won').style.display = 'block'
             }
         } else {
-            resetCards('I', div)
+            resetCards('', div)
         }
         return
     }
@@ -98,4 +89,28 @@ function addTime() {
 
 function timer() {
     t = setTimeout(addTime, 1000)
+}
+
+function startGame() {
+    cards = [], deck = {}, flippedCard = {}, startedTimer = false, seconds = 0, minutes = 0, matches = 0
+    document.getElementById('cards').innerHTML = ''
+    document.getElementById('timer').textContent = '00:00'
+    for (let i = 0; i < 52; ++i) {
+        cards.push({rank: i%13, suit: i%4})
+    }
+
+    for (let i = 0; i < 52; ++i) {
+        let rand = Math.floor(Math.random() * (52 - i))
+        deck[i] = cards[rand]
+        cards.splice(rand, 1)
+
+        let div = document.createElement('div')
+        div.setAttribute('id', i)
+        div.setAttribute('class', 'card')
+        div.addEventListener('click', flipCard)
+        div.addEventListener('mousedown', highlightCard)
+        div.addEventListener('mouseup', unhighlightCard)
+        div.addEventListener('mouseout', unhighlightCard)
+        document.getElementById('cards').appendChild(div)
+    }
 }
