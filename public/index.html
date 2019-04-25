@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Gothic+A1:200" rel="stylesheet">
+    </head>
+    <body>
+        <style>
+            body {
+                font-family: Gothic A1;
+                font-weight: 200;
+                user-select: none;
+                background-color: #EDEDEC;
+            }
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(13, 1fr);
+                grid-gap: 1rem;
+                margin: 0 auto;
+            }
+
+            .grid-container > div {
+                text-align: center;
+                padding: 1rem;
+                border: 1px solid black;
+                font-size: 2.5rem;
+            }
+
+            h1 { 
+                text-align: center;
+            }
+
+            #timer {
+                text-align: center;
+            }
+
+        </style>
+        <h1>Memory</h1>
+        <div id="cards" class="grid-container centered">
+        </div>
+        <p id="timer">00:00</p>
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>
