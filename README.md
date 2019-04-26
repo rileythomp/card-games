@@ -10,10 +10,10 @@ Made with Node.js and vanilla JS.
 
 To run locally:
 
-```git clone https://github.com/rileythomp/card-games.git```
+```$ git clone https://github.com/rileythomp/card-games.git```
 
-```npm i```
+```$ npm i```
 
-```npm start```
+```$ npm start```
 
 Then visit localhost:3032
