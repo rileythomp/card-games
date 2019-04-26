@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Gothic+A1:200" rel="stylesheet">
+        <title>Card Games</title>
+    </head>
+    <body>
+        <style>
+            body {
+                font-family: Gothic A1;
+                font-weight: 200;
+                user-select: none;
+                background-color: #EDEDEC;
+            }
+            .grid-container {
+                width: 90vw;
+                display: grid;
+                grid-template-columns: repeat(13, 1fr);
+                grid-gap: 1.5rem;
+                margin: 0 auto;
+            }
+
+            .grid-container > div {
+                text-align: center;
+                padding: 0.9rem;
+                border: 1px solid black;
+                font-size: 2rem;
+                height: 5rem;
+            }
+
+            h1 { 
+                text-align: center;
+                margin-top: 0;
+            }
+
+            #timer {
+                text-align: center;
+                font-size: 2rem;
+                margin-bottom: 0;
+            }
+
+            button {
+                display: block;
+                margin: 0.5rem auto 0 auto;
+                font-size: 1.5rem;
+                padding: 0.5rem 1rem;
+                border-radius: 1rem;
+                background-color: #EDEDEC;
+                border-color: black;
+            }
+
+            #won {
+                text-align: center;
+                font-size: 2rem;
+                margin-top: 0.5rem;
+                margin-bottom: 0;
+            }
+
+        </style>
+        <span id="home">home</span>
+        <h1>Concentration</h1>
+        <div id="cards" class="grid-container centered">
+        </div>
+        <p id="timer">00:00</p>
+        <button id="give-up" onclick="giveUp()">Give up</button>
+        <p id="won" style="display:none"></p>
+        <button onclick="startGame()" id="play-again" style="display:none">Play again</button>
+        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="concentration.js"></script>
+    </body>
+</html>

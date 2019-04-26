@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Card Games</title>
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1:200" rel="stylesheet">
+</head>
+    <body>
+        <style>
+            body {
+                font-family: Gothic A1;
+                font-weight: 200;
+                user-select: none;
+                background-color: #EDEDEC;
+            }
+            .grid-container {
+                width: 90vw;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-gap: 1.5rem;
+                margin: 0 auto;
+                height: 25rem;
+            }
+
+            .grid-container > div {
+                text-align: center;
+                height: 10rem;
+            }
+
+            .card {
+                border: 1px solid black;
+                height: 20rem;
+                width: 15rem;
+                margin: 0 auto;
+            }
+
+            h1 { 
+                text-align: center;
+                margin-top: 0;
+            }
+
+            #timer {
+                text-align: center;
+                font-size: 2rem;
+                margin-bottom: 0;
+            }
+
+            button {
+                display: block;
+                margin: 0.5rem auto 0 auto;
+                font-size: 1.5rem;
+                padding: 0.5rem 1rem;
+                border-radius: 1rem;
+                background-color: #EDEDEC;
+                border-color: black;
+            }
+
+            #won {
+                text-align: center;
+                font-size: 2rem;
+                margin-top: 0.5rem;
+                margin-bottom: 0;
+            }
+
+            .noclick {
+                pointer-events: none !important;
+            }
+
+            .show-card {
+                display: none;
+            }
+
+        </style>
+        <span id="home">home</span>
+        <h1>War</h1>
+        <div class="grid-container">
+            <div display="inline">
+                <div class="card" id="player">
+
+                </div>
+                <p id="player-count">26</p>
+            </div>
+            <div display="inline">
+                <div id="player-show" class="card show-card noclick">
+
+                </div>
+            </div>
+            <div display="inline">
+                <div id="computer-show" class="card show-card noclick">
+
+                </div>
+            </div>
+            <div display="inline">
+                <div id="computer" class="card noclick">
+
+                </div>
+                <p id="computer-count">26</p>
+            </div>
+        </div>
+        <button id="give-up" onclick="giveUp()">Give up</button>
+        <p id="won" style="display:none"></p>
+        <button onclick="startGame()" id="play-again" style="display:none">Play again</button>
+        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="war.js"></script>
+    </body>
+</html>
