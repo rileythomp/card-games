@@ -49,9 +49,9 @@ function handleMatch(div) {
     matches++
     if (matches > 25) {
         clearTimeout(t)
-        document.getElementById('play-again').style.display = 'block'
         document.getElementById('won').textContent = 'You won!'
         document.getElementById('won').style.display = 'block'
+        document.getElementById('play-again').style.display = 'block'
         document.getElementById('give-up').style.display = 'none'
 
     }
@@ -59,7 +59,7 @@ function handleMatch(div) {
     document.getElementById(idFromCard(deck, flippedCard)).style.borderColor = '#00aa00'
     setTimeout(function() {
         div.style.borderColor = '#000000'
-        document.getElementById(idFromCard(deck, flippedCard)).style.borderColor = '#000000'
+        document.getElementById(idFromCard(deck, flippedCard)).style.borderColor =  '#000000'
         flippedCard = {}
     }, 800)
 }

@@ -14,18 +14,24 @@
                 user-select: none;
                 background-color: #EDEDEC;
             }
-            .grid-container {
+            #main-container {
                 width: 90vw;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 grid-gap: 1.5rem;
                 margin: 0 auto;
                 height: 25rem;
+                grid-row-gap: 0;
             }
 
-            .grid-container > div {
+            #main-container > div {
                 text-align: center;
-                height: 10rem;
+                /* height: 20rem; */
+            }
+
+            .war-cards {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .card {
@@ -33,6 +39,17 @@
                 height: 20rem;
                 width: 15rem;
                 margin: 0 auto;
+                border-radius: 0.5rem;
+            }
+
+            .war-card {
+                border: 1px solid black;
+                border-radius: 0.5rem;
+                width: 3.75rem;
+                height: 4rem;
+                margin: 0 auto;
+                margin-bottom: 1rem;
+                padding-top: 1rem;
             }
 
             h1 { 
@@ -69,12 +86,23 @@
 
             .show-card {
                 display: none;
+                font-size: 5rem;
+                padding-top: 4rem;
+                height: 16rem;
+            }
+
+            #player-war-cards {
+                grid-column: 1 / 2;
+            }
+
+            #computer-war-cards {
+                grid-column: 4 / 5
             }
 
         </style>
         <span id="home">home</span>
         <h1>War</h1>
-        <div class="grid-container">
+        <div id="main-container" class="grid-container">
             <div display="inline">
                 <div class="card" id="player">
 
@@ -96,6 +124,12 @@
 
                 </div>
                 <p id="computer-count">26</p>
+            </div>
+            <div id="player-war-cards" class="war-cards">
+
+            </div>
+            <div id="computer-war-cards" class="war-cards">
+                
             </div>
         </div>
         <button id="give-up" onclick="giveUp()">Give up</button>
