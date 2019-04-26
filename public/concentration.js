@@ -107,3 +107,7 @@ function addTime() {
 function formatTime(time) {
     return (time > 9 ? time : '0' + time)
 }
+
+document.getElementById('home').addEventListener('click', function() {
+    document.location.href = 'index.html'
+})

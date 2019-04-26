@@ -21,22 +21,26 @@ const suits = {
     3: '♣'
 }
 
-document.getElementById('home').addEventListener('click', function() {
-    document.location.href = "index.html"
+let buttons = document.getElementsByTagName('button')
+Array.from(buttons).forEach(function(button) {
+    console.log(this.id)
+    button.addEventListener('mousedown', highlight)
+    button.addEventListener('mouseup', unhighlight)
+    button.addEventListener('mouseout', unhighlight)
 })
 
-function highlightCard() {
+function highlight() {
     this.style.backgroundColor = '#D4D4D2'
 }
 
-function unhighlightCard() {
+function unhighlight() {
     this.style.backgroundColor = '#EDEDEC'
 }
 
 let cardDivs = document.getElementsByClassName('card')
 
 Array.from(cardDivs).forEach(function(cardDiv) {
-    cardDiv.addEventListener('mousedown', highlightCard)
-    cardDiv.addEventListener('mouseup', unhighlightCard)
-    cardDiv.addEventListener('mouseout', unhighlightCard)
+    cardDiv.addEventListener('mousedown', highlight)
+    cardDiv.addEventListener('mouseup', unhighlight)
+    cardDiv.addEventListener('mouseout', unhighlight)
 })

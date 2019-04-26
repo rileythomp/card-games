@@ -69,8 +69,6 @@ function giveUp() {
 
 }
 
-document.getElementById('computer').removeEventListener('click', function() {console.log('removed cpu card click')})
-
 let inWar = false
 let warCards = []
 
@@ -146,4 +144,8 @@ document.getElementById('player').addEventListener('click', function () {
             checkWin(1)
         }
     }, 1500)
+})
+
+document.getElementById('home').addEventListener('click', function() {
+    document.location.href = 'index.html'
 })
