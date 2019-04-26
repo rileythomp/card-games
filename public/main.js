@@ -74,7 +74,7 @@ function flipCard() {
 
 function handleMatch(div) {
     matches++
-    if (matches > 0) {
+    if (matches > 25) {
         clearTimeout(t)
         document.getElementById('play-again').style.display = 'block'
         document.getElementById('won').textContent = 'You won!'
@@ -123,7 +123,7 @@ function timer() {
 
 function addTime() {
     seconds++;
-    if (seconds >= 60) {
+    if (seconds > 59) {
         seconds = 0
         minutes++;
     }
@@ -132,7 +132,7 @@ function addTime() {
 }
 
 function formatTime(time) {
-    return (time > 10 ? time : '0' + time)
+    return (time > 9 ? time : '0' + time)
 }
 
 function highlightCard() {
