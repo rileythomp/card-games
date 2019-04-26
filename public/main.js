@@ -23,7 +23,6 @@ const suits = {
 
 let buttons = document.getElementsByTagName('button')
 Array.from(buttons).forEach(function(button) {
-    console.log(this.id)
     button.addEventListener('mousedown', highlight)
     button.addEventListener('mouseup', unhighlight)
     button.addEventListener('mouseout', unhighlight)
