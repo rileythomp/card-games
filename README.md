@@ -1,6 +1,6 @@
 # Card Games
 
-https://cardsfun.herokuapp.com
+Deployed with Heroku at https://cardsfun.herokuapp.com
 
 A card games site including Concentration and War.
 
