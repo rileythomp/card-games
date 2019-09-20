@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Gothic+A1:200" rel="stylesheet">
+        <link href="../common.css" rel="stylesheet">
+        <title>Card Games</title>
+    </head>
+    <body>
+        <style>
+            .card {
+                position: absolute;
+                border: 1px solid black;
+                height: 160px;
+                width: 100px;
+            }
+        </style>
+        <button id="home">home</button>
+        <h1>Solitaire</h1>
+        <div id="cards" class="grid-container centered">
+            <div class="card" style="top: 100px; z-index: 1">
+
+            </div>
+            <div class="card" style="top: 115px; z-index: 2">
+
+            </div>
+            <div class="card" style="top: 130px; z-index: 3">
+
+            </div>
+        </div>
+        <p id="timer">00:00</p>
+        <button id="give-up" onclick="gameOverDisplay()">Give up</button>
+        <p id="won" style="display:none"></p>
+        <button onclick="startGame()" id="play-again" style="display:none">Play again</button>
+        <script type="text/javascript" src="../scommon.js"></script>
+        <script type="text/javascript" src="solitaire.js"></script>
+    </body>
+</html>

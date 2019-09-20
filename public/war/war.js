@@ -3,7 +3,12 @@ let cards = [], deck = [], playerDeck = [], computerDeck = [], playerCard = {}, 
 startGame()
 
 function startGame() {
-    cards = [], deck = [], playerDeck = [], computerDeck = [], playerCard = {}, computerCard = {}
+    cards = []
+    deck = []
+    playerDeck = []
+    computerDeck = []
+    playerCard = {}
+    computerCard = {}
 
     for (let i = 0; i < 52; ++i) {
         cards.push({rank: i%13, suit: i%4})
@@ -18,11 +23,11 @@ function startGame() {
     playerDeck = deck.slice(0, 26)
     computerDeck = deck.slice(26, 52)
 
-    document.getElementById('play-again').style.display = 'none'
-    document.getElementById('won').style.display = 'none'
-    document.getElementById('give-up').style.display = 'block'
+    clearGameOverDisplay();
+    
     document.getElementById('player-count').textContent = 26
     document.getElementById('computer-count').textContent = 26
+
     let warDivs = document.getElementsByClassName('war-cards')
     Array.from(warDivs).forEach(function(warDiv) {
         warDiv.innerHTML = ''
@@ -34,39 +39,36 @@ function updateCardCounts() {
     document.getElementById('computer-count').textContent = computerDeck.length
 }
 
+function clearDisplay() {
+    document.getElementById('player-show').style.display = 'none'
+    document.getElementById('computer-show').style.display = 'none'
+    document.getElementById('player-show').style.borderColor = '#000000'            
+    document.getElementById('computer-show').style.borderColor = '#000000'
+}
+
+function displayWin() {
+    clearDisplay();
+    document.getElementById('won').style.display = 'block'
+    document.getElementById('play-again').style.display = 'block'
+    document.getElementById('give-up').style.display = 'none'
+}
+
 function checkWin(n) {
     if (playerDeck.length < n) {
-        document.getElementById('player-show').style.display = 'none'
-        document.getElementById('computer-show').style.display = 'none'
-        document.getElementById('player-show').style.borderColor = '#000000'            
-        document.getElementById('computer-show').style.borderColor = '#000000'
+        displayWin()
+
         document.getElementById('won').textContent = 'You lost'
-        document.getElementById('won').style.display = 'block'
-        document.getElementById('play-again').style.display = 'block'
-        document.getElementById('give-up').style.display = 'none'
     }
     else if (computerDeck.length < n) {
-        document.getElementById('player-show').style.display = 'none'
-        document.getElementById('computer-show').style.display = 'none'
-        document.getElementById('player-show').style.borderColor = '#000000'            
-        document.getElementById('computer-show').style.borderColor = '#000000'
+        displayWin()
+
         document.getElementById('won').textContent = 'You won!'
-        document.getElementById('won').style.display = 'block'
-        document.getElementById('play-again').style.display = 'block'
-        document.getElementById('give-up').style.display = 'none'
         let warDivs = document.getElementsByClassName('war-cards')
+
         Array.from(warDivs).forEach(function(warDiv) {
             warDiv.innerHTML = ''
         })
     }
-}
-
-function giveUp() {
-    document.getElementById('give-up').style.display = 'none'
-    document.getElementById('won').textContent = 'Game over'
-    document.getElementById('won').style.display = 'block'
-    document.getElementById('play-again').style.display = 'block'
-
 }
 
 let inWar = false
@@ -93,17 +95,26 @@ document.getElementById('player').addEventListener('click', function () {
     setTimeout(function() {
         if (playerCard.rank > computerCard.rank) {
             playerDeck.push(playerCard, computerCard)
-            if (inWar) { playerDeck = playerDeck.concat(warCards) }
+
+            if (inWar) {
+                playerDeck = playerDeck.concat(warCards)
+            }
+
             inWar = false
             warCards = []
             let warDivs = document.getElementsByClassName('war-cards')
+
             Array.from(warDivs).forEach(function(warDiv) {
                 warDiv.innerHTML = ''
             })
         } 
         else if (computerCard.rank > playerCard.rank) {
             computerDeck.push(playerCard, computerCard)
-            if (inWar) { computerDeck = computerDeck.concat(warCards) }
+
+            if (inWar) {
+                computerDeck = computerDeck.concat(warCards)
+            }
+            
             inWar = false
             warCards = []
             let warDivs = document.getElementsByClassName('war-cards')
@@ -133,10 +144,7 @@ document.getElementById('player').addEventListener('click', function () {
             }
         }
         
-        document.getElementById('player-show').style.display = 'none'
-        document.getElementById('computer-show').style.display = 'none'
-        document.getElementById('player-show').style.borderColor = '#000000'            
-        document.getElementById('computer-show').style.borderColor = '#000000'
+        clearDisplay()
 
         updateCardCounts()
 
@@ -146,6 +154,3 @@ document.getElementById('player').addEventListener('click', function () {
     }, 1500)
 })
 
-document.getElementById('home').addEventListener('click', function() {
-    document.location.href = 'index.html'
-})
